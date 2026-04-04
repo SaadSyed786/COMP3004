@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect><x>0</x><y>0</y><width>960</width><height>700</height></rect>
+  </property>
+  <property name="windowTitle">
+   <string>HintonMarket - Farmers Market Management System</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="pages">
+    <property name="geometry">
+     <rect><x>0</x><y>0</y><width>960</width><height>670</height></rect>
+    </property>
+    <property name="currentIndex"><number>0</number></property>
+
+    <!-- page 0: login -->
+    <widget class="QWidget" name="loginPage">
+     <widget class="QLabel" name="appTitle">
+      <property name="geometry"><rect><x>280</x><y>80</y><width>400</width><height>40</height></rect></property>
+      <property name="text"><string>HintonMarket</string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+      <property name="styleSheet"><string>font-size: 26px; font-weight: bold;</string></property>
+     </widget>
+     <widget class="QLabel" name="appSubtitle">
+      <property name="geometry"><rect><x>230</x><y>120</y><width>500</width><height>20</height></rect></property>
+      <property name="text"><string>Hintonville Farmers Market Management System</string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+      <property name="styleSheet"><string>color: #666;</string></property>
+     </widget>
+     <widget class="QLabel" name="loginLabel">
+      <property name="geometry"><rect><x>370</x><y>195</y><width>220</width><height>20</height></rect></property>
+      <property name="text"><string>Enter username to log in:</string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+     </widget>
+     <widget class="QLineEdit" name="usernameField">
+      <property name="geometry"><rect><x>355</x><y>220</y><width>250</width><height>30</height></rect></property>
+      <property name="placeholderText"><string>username</string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+     </widget>
+     <widget class="QPushButton" name="loginBtn">
+      <property name="geometry"><rect><x>405</x><y>260</y><width>150</width><height>32</height></rect></property>
+      <property name="text"><string>Log In</string></property>
+     </widget>
+     <widget class="QLabel" name="loginError">
+      <property name="geometry"><rect><x>305</x><y>300</y><width>350</width><height>20</height></rect></property>
+      <property name="text"><string></string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+      <property name="styleSheet"><string>color: red;</string></property>
+     </widget>
+     <widget class="QLabel" name="accHeader">
+      <property name="geometry"><rect><x>330</x><y>355</y><width>300</width><height>18</height></rect></property>
+      <property name="text"><string>Available Accounts</string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+      <property name="styleSheet"><string>font-weight: bold; color: #555;</string></property>
+     </widget>
+     <widget class="QLabel" name="accFood">
+      <property name="geometry"><rect><x>280</x><y>378</y><width>400</width><height>16</height></rect></property>
+      <property name="text"><string>Food Vendors: haashir, ali, saad, syed</string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+      <property name="styleSheet"><string>color: #777; font-size: 11px;</string></property>
+     </widget>
+     <widget class="QLabel" name="accArtisan">
+      <property name="geometry"><rect><x>280</x><y>396</y><width>400</width><height>16</height></rect></property>
+      <property name="text"><string>Artisan Vendors: tanveer, sohail, ahmed, dana</string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+      <property name="styleSheet"><string>color: #777; font-size: 11px;</string></property>
+     </widget>
+     <widget class="QLabel" name="accOther">
+      <property name="geometry"><rect><x>280</x><y>414</y><width>400</width><height>16</height></rect></property>
+      <property name="text"><string>Operator: operator  |  Admin: admin</string></property>
+      <property name="alignment"><set>Qt::AlignCenter</set></property>
+      <property name="styleSheet"><string>color: #777; font-size: 11px;</string></property>
+     </widget>
+    </widget>
+
+    <!-- page 1: vendor menu -->
+    <widget class="QWidget" name="vendorMenuPage">
+     <widget class="QLabel" name="menuTitle">
+      <property name="geometry"><rect><x>30</x><y>20</y><width>300</width><height>28</height></rect></property>
+      <property name="text"><string>Vendor Menu</string></property>
+      <property name="styleSheet"><string>font-size: 20px; font-weight: bold;</string></property>
+     </widget>
+     <widget class="QLabel" name="welcomeMsg">
+      <property name="geometry"><rect><x>30</x><y>55</y><width>500</width><height>20</height></rect></property>
+      <property name="styleSheet"><string>font-size: 13px; color: #444;</string></property>
+     </widget>
+     <widget class="QLabel" name="vendorTypeLabel">
+      <property name="geometry"><rect><x>30</x><y>78</y><width>500</width><height>18</height></rect></property>
+      <property name="styleSheet"><string>color: #666;</string></property>
+     </widget>
+     <widget class="QPushButton" name="logoutBtn">
+      <property name="geometry"><rect><x>810</x><y>25</y><width>110</width><height>30</height></rect></property>
+      <property name="text"><string>Log Out</string></property>
+     </widget>
+     <widget class="QPushButton" name="browseBtn">
+      <property name="geometry"><rect><x>310</x><y>190</y><width>340</width><height>50</height></rect></property>
+      <property name="text"><string>Browse Market Schedule</string></property>
+      <property name="styleSheet"><string>font-size: 15px; font-weight: bold;</string></property>
+     </widget>
+     <widget class="QPushButton" name="dashBtn">
+      <property name="geometry"><rect><x>310</x><y>260</y><width>340</width><height>50</height></rect></property>
+      <property name="text"><string>View Vendor Dashboard</string></property>
+      <property name="styleSheet"><string>font-size: 15px; font-weight: bold;</string></property>
+     </widget>
+    </widget>
+
+    <!-- page 2: market schedule -->
+    <widget class="QWidget" name="schedulePage">
+     <widget class="QLabel" name="schedTitle">
+      <property name="geometry"><rect><x>30</x><y>12</y><width>300</width><height>28</height></rect></property>
+      <property name="text"><string>Market Schedule</string></property>
+      <property name="styleSheet"><string>font-size: 20px; font-weight: bold;</string></property>
+     </widget>
+     <widget class="QLabel" name="schedHint">
+      <property name="geometry"><rect><x>30</x><y>45</y><width>600</width><height>18</height></rect></property>
+      <property name="text"><string>Select a date to book a stall or join the waitlist.</string></property>
+      <property name="styleSheet"><string>color: #555;</string></property>
+     </widget>
+     <widget class="QPushButton" name="backScheduleBtn">
+      <property name="geometry"><rect><x>810</x><y>15</y><width>110</width><height>30</height></rect></property>
+      <property name="text"><string>Back</string></property>
+     </widget>
+     <widget class="QTableWidget" name="schedTable">
+      <property name="geometry"><rect><x>30</x><y>72</y><width>895</width><height>400</height></rect></property>
+      <property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property>
+      <property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property>
+      <property name="alternatingRowColors"><bool>true</bool></property>
+      <property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property>
+      <property name="columnCount"><number>5</number></property>
+      <column><property name="text"><string>Market Date</string></property></column>
+      <column><property name="text"><string>Food Available</string></property></column>
+      <column><property name="text"><string>Artisan Available</string></property></column>
+      <column><property name="text"><string>Food Status</string></property></column>
+      <column><property name="text"><string>Artisan Status</string></property></column>
+     </widget>
+     <widget class="QPushButton" name="bookBtn">
+      <property name="geometry"><rect><x>30</x><y>490</y><width>160</width><height>34</height></rect></property>
+      <property name="text"><string>Book Stall</string></property>
+      <property name="styleSheet"><string>font-weight: bold;</string></property>
+     </widget>
+     <widget class="QPushButton" name="waitlistBtn">
+      <property name="geometry"><rect><x>210</x><y>490</y><width>160</width><height>34</height></rect></property>
+      <property name="text"><string>Join Waitlist</string></property>
+      <property name="styleSheet"><string>font-weight: bold;</string></property>
+     </widget>
+     <widget class="QLabel" name="schedMsg">
+      <property name="geometry"><rect><x>30</x><y>540</y><width>895</width><height>40</height></rect></property>
+      <property name="wordWrap"><bool>true</bool></property>
+     </widget>
+    </widget>
+
+    <!-- page 3: vendor dashboard -->
+    <widget class="QWidget" name="dashPage">
+     <widget class="QLabel" name="dashTitle">
+      <property name="geometry"><rect><x>30</x><y>8</y><width>300</width><height>28</height></rect></property>
+      <property name="text"><string>Vendor Dashboard</string></property>
+      <property name="styleSheet"><string>font-size: 20px; font-weight: bold;</string></property>
+     </widget>
+     <widget class="QPushButton" name="backDashBtn">
+      <property name="geometry"><rect><x>810</x><y>10</y><width>110</width><height>30</height></rect></property>
+      <property name="text"><string>Back</string></property>
+     </widget>
+     <widget class="QLabel" name="bizHeader"><property name="geometry"><rect><x>30</x><y>45</y><width>200</width><height>16</height></rect></property><property name="text"><string>Business Information</string></property><property name="styleSheet"><string>font-weight: bold; font-size: 12px;</string></property></widget>
+     <widget class="QLabel" name="bizInfo"><property name="geometry"><rect><x>30</x><y>63</y><width>890</width><height>55</height></rect></property><property name="wordWrap"><bool>true</bool></property><property name="styleSheet"><string>font-size: 11px; color: #333;</string></property></widget>
+     <widget class="QLabel" name="compHeader"><property name="geometry"><rect><x>30</x><y>125</y><width>300</width><height>16</height></rect></property><property name="text"><string>Compliance Documentation</string></property><property name="styleSheet"><string>font-weight: bold; font-size: 12px;</string></property></widget>
+     <widget class="QLabel" name="compInfo"><property name="geometry"><rect><x>30</x><y>143</y><width>890</width><height>65</height></rect></property><property name="wordWrap"><bool>true</bool></property><property name="styleSheet"><string>font-size: 11px; color: #333;</string></property></widget>
+     <widget class="QLabel" name="bookHeader"><property name="geometry"><rect><x>30</x><y>218</y><width>200</width><height>16</height></rect></property><property name="text"><string>Active Stall Bookings</string></property><property name="styleSheet"><string>font-weight: bold; font-size: 12px;</string></property></widget>
+     <widget class="QTableWidget" name="bookTable"><property name="geometry"><rect><x>30</x><y>238</y><width>580</width><height>95</height></rect></property><property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property><property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property><property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property><property name="columnCount"><number>3</number></property><column><property name="text"><string>Date</string></property></column><column><property name="text"><string>Category</string></property></column><column><property name="text"><string>Booked At</string></property></column></widget>
+     <widget class="QPushButton" name="cancelBookBtn"><property name="geometry"><rect><x>630</x><y>260</y><width>190</width><height>30</height></rect></property><property name="text"><string>Cancel Booking</string></property></widget>
+     <widget class="QLabel" name="waitHeader"><property name="geometry"><rect><x>30</x><y>345</y><width>200</width><height>16</height></rect></property><property name="text"><string>Waitlist Positions</string></property><property name="styleSheet"><string>font-weight: bold; font-size: 12px;</string></property></widget>
+     <widget class="QTableWidget" name="waitTable"><property name="geometry"><rect><x>30</x><y>365</y><width>580</width><height>95</height></rect></property><property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property><property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property><property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property><property name="columnCount"><number>3</number></property><column><property name="text"><string>Date</string></property></column><column><property name="text"><string>Category</string></property></column><column><property name="text"><string>Position</string></property></column></widget>
+     <widget class="QPushButton" name="leaveWaitBtn"><property name="geometry"><rect><x>630</x><y>387</y><width>190</width><height>30</height></rect></property><property name="text"><string>Leave Waitlist</string></property></widget>
+     <widget class="QLabel" name="notifHeader"><property name="geometry"><rect><x>30</x><y>475</y><width>200</width><height>16</height></rect></property><property name="text"><string>Notifications</string></property><property name="styleSheet"><string>font-weight: bold; font-size: 12px;</string></property></widget>
+     <widget class="QListWidget" name="notifList"><property name="geometry"><rect><x>30</x><y>495</y><width>890</width><height>130</height></rect></property><property name="styleSheet"><string>font-size: 11px;</string></property></widget>
+    </widget>
+
+    <!-- page 4: operator dashboard -->
+    <widget class="QWidget" name="operatorPage">
+     <widget class="QLabel" name="opTitle"><property name="geometry"><rect><x>30</x><y>10</y><width>400</width><height>28</height></rect></property><property name="text"><string>Market Operator Dashboard</string></property><property name="styleSheet"><string>font-size: 20px; font-weight: bold;</string></property></widget>
+     <widget class="QPushButton" name="opLogout"><property name="geometry"><rect><x>810</x><y>12</y><width>110</width><height>30</height></rect></property><property name="text"><string>Log Out</string></property></widget>
+     <widget class="QLabel" name="opVendorLabel"><property name="geometry"><rect><x>30</x><y>48</y><width>100</width><height>20</height></rect></property><property name="text"><string>Select Vendor:</string></property><property name="styleSheet"><string>font-weight: bold;</string></property></widget>
+     <widget class="QComboBox" name="opVendorCombo"><property name="geometry"><rect><x>135</x><y>45</y><width>400</width><height>28</height></rect></property></widget>
+     <widget class="QLabel" name="opSchedHeader"><property name="geometry"><rect><x>30</x><y>82</y><width>300</width><height>16</height></rect></property><property name="text"><string>Market Schedule</string></property><property name="styleSheet"><string>font-weight: bold; font-size: 12px;</string></property></widget>
+     <widget class="QTableWidget" name="opSchedTable"><property name="geometry"><rect><x>30</x><y>100</y><width>895</width><height>140</height></rect></property><property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property><property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property><property name="alternatingRowColors"><bool>true</bool></property><property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property><property name="columnCount"><number>5</number></property><column><property name="text"><string>Market Date</string></property></column><column><property name="text"><string>Food Available</string></property></column><column><property name="text"><string>Artisan Available</string></property></column><column><property name="text"><string>Food Status</string></property></column><column><property name="text"><string>Artisan Status</string></property></column></widget>
+     <widget class="QPushButton" name="opBookBtn"><property name="geometry"><rect><x>30</x><y>248</y><width>200</width><height>32</height></rect></property><property name="text"><string>Book Stall for Vendor</string></property><property name="styleSheet"><string>font-weight: bold;</string></property></widget>
+     <widget class="QLabel" name="opBookHeader"><property name="geometry"><rect><x>30</x><y>295</y><width>300</width><height>16</height></rect></property><property name="text"><string>Vendor's Active Bookings</string></property><property name="styleSheet"><string>font-weight: bold; font-size: 12px;</string></property></widget>
+     <widget class="QTableWidget" name="opBookTable"><property name="geometry"><rect><x>30</x><y>314</y><width>580</width><height>95</height></rect></property><property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property><property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property><property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property><property name="columnCount"><number>3</number></property><column><property name="text"><string>Date</string></property></column><column><property name="text"><string>Category</string></property></column><column><property name="text"><string>Booked At</string></property></column></widget>
+     <widget class="QPushButton" name="opCancelBtn"><property name="geometry"><rect><x>630</x><y>340</y><width>200</width><height>32</height></rect></property><property name="text"><string>Cancel Booking</string></property><property name="styleSheet"><string>font-weight: bold;</string></property></widget>
+     <widget class="QLabel" name="opWaitHeader"><property name="geometry"><rect><x>30</x><y>422</y><width>300</width><height>16</height></rect></property><property name="text"><string>Vendor's Waitlist Positions</string></property><property name="styleSheet"><string>font-weight: bold; font-size: 12px;</string></property></widget>
+     <widget class="QTableWidget" name="opWaitTable"><property name="geometry"><rect><x>30</x><y>441</y><width>580</width><height>95</height></rect></property><property name="selectionMode"><enum>QAbstractItemView::SingleSelection</enum></property><property name="selectionBehavior"><enum>QAbstractItemView::SelectRows</enum></property><property name="editTriggers"><set>QAbstractItemView::NoEditTriggers</set></property><property name="columnCount"><number>3</number></property><column><property name="text"><string>Date</string></property></column><column><property name="text"><string>Category</string></property></column><column><property name="text"><string>Position</string></property></column></widget>
+     <widget class="QPushButton" name="opRemoveWaitBtn"><property name="geometry"><rect><x>630</x><y>467</y><width>200</width><height>32</height></rect></property><property name="text"><string>Remove from Waitlist</string></property><property name="styleSheet"><string>font-weight: bold;</string></property></widget>
+     <widget class="QLabel" name="opMsg"><property name="geometry"><rect><x>30</x><y>555</y><width>890</width><height>40</height></rect></property><property name="wordWrap"><bool>true</bool></property><property name="styleSheet"><string>color: #555;</string></property></widget>
+    </widget>
+
+    <!-- page 5: admin placeholder -->
+    <widget class="QWidget" name="adminPage">
+     <widget class="QLabel" name="adminTitle"><property name="geometry"><rect><x>30</x><y>20</y><width>400</width><height>28</height></rect></property><property name="text"><string>System Administrator</string></property><property name="styleSheet"><string>font-size: 20px; font-weight: bold;</string></property></widget>
+     <widget class="QPushButton" name="adminLogout"><property name="geometry"><rect><x>810</x><y>25</y><width>110</width><height>30</height></rect></property><property name="text"><string>Log Out</string></property></widget>
+     <widget class="QLabel" name="adminMsg"><property name="geometry"><rect><x>30</x><y>70</y><width>500</width><height>20</height></rect></property><property name="text"><string>Admin features coming in a future deliverable.</string></property><property name="styleSheet"><string>color: #666;</string></property></widget>
+    </widget>
+
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar"><property name="geometry"><rect><x>0</x><y>0</y><width>960</width><height>22</height></rect></property></widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
