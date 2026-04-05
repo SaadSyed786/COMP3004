@@ -13,9 +13,9 @@
 
 This project uses **Option A — Auto-copy via .pro file**.
 
-The `hintonMarket.sqlite3` database is in the source folder next to the `.pro` file. The `.pro` has a copydb rule that copies it to the build directory automatically on first build. No manual steps needed.
+The `hintonMarket.db` database is in the source folder next to the `.pro` file. The `.pro` has a copydb rule that copies it to the build directory automatically on first build. No manual steps needed.
 
-If auto-copy fails, manually copy `hintonMarket.sqlite3` from the source folder to the build output directory.
+If auto-copy fails, manually copy `hintonMarket.db` from the source folder to the build output directory.
 
 ## User Accounts for Testing
 

@@ -54,8 +54,8 @@ HEADERS += \
 FORMS += \
     view/mainwindow.ui
 
-# auto-copy the sqlite db into the build folder so the app can find it
-copydb.commands = test -f $$OUT_PWD/hintonMarket.sqlite3 || cp $$PWD/hintonMarket.sqlite3 $$OUT_PWD/
+# copy the db into the build folder so the app can find it
+copydb.commands = test -f $$OUT_PWD/hintonMarket.db || cp $$PWD/hintonMarket.db $$OUT_PWD/
 QMAKE_EXTRA_TARGETS += copydb
 PRE_TARGETDEPS += copydb
 

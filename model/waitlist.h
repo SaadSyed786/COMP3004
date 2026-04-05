@@ -22,6 +22,7 @@ public:
     int     positionOf(QString vendorUsername);
     bool    contains(QString vendorUsername);
     int     size();
+    QList<QString> getQueue();
 
 private:
     QString vendorCategory;

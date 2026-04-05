@@ -30,23 +30,20 @@ DataManager::~DataManager()
 bool DataManager::connectToDatabase()
 {
     database = QSqlDatabase::addDatabase("QSQLITE");
-    QString path = QCoreApplication::applicationDirPath() + "/hintonMarket.sqlite3";
+    QString path = QCoreApplication::applicationDirPath() + "/hintonMarket.db";
     database.setDatabaseName(path);
 
     if (!database.open()) {
-        qDebug() << "Failed to open database:" << database.lastError().text();
+        qDebug() << "DB Error:" << database.lastError().text();
         return false;
     }
     return true;
 }
 
-/* ---- load functions: read sqlite tables into in-memory objects ---- */
-
 void DataManager::loadAllUsers()
 {
     QSqlQuery qry;
 
-    // non-vendor users (operator + admin)
     qry.exec("SELECT username, full_name, role FROM users WHERE role != 'Vendor'");
     while (qry.next()) {
         QString name = qry.value(0).toString();
@@ -59,7 +56,6 @@ void DataManager::loadAllUsers()
             userList.append(new SysAdmin(name, full));
     }
 
-    // vendor users
     qry.exec("SELECT u.username, u.full_name, v.biz_name, v.category, "
              "v.email, v.phone, v.mailing_addr "
              "FROM users u INNER JOIN vendors v ON u.username = v.username "
@@ -80,7 +76,6 @@ void DataManager::loadAllUsers()
         else
             vendor = new ArtisanVendor(uname, full, biz, em, ph, addr);
 
-        // load this vendor's compliance docs
         QSqlQuery docQry;
         docQry.prepare("SELECT doc_type, doc_number, expiry, provider "
                        "FROM compliance_docs WHERE vendor_username = ?");
@@ -143,6 +138,7 @@ void DataManager::loadWaitlists()
 
         Waitlist* wl = new Waitlist(cat, dt);
 
+        // load vendors in FIFO order by position
         QSqlQuery inner;
         inner.prepare("SELECT vendor_username FROM waitlists "
                       "WHERE category=? AND market_date=? ORDER BY position");
@@ -174,8 +170,6 @@ void DataManager::loadNotifications()
     }
 }
 
-/* ---- lookup helpers ---- */
-
 User* DataManager::findUser(QString username)
 {
     QString lower = username.toLower().trimmed();
@@ -205,8 +199,6 @@ QVector<Vendor*> DataManager::getAllVendors()
 }
 
 MarketSchedule* DataManager::getSchedule() { return &schedule; }
-
-/* ---- booking CRUD ---- */
 
 void DataManager::addBooking(StallBooking booking)
 {
@@ -256,8 +248,6 @@ QVector<StallBooking> DataManager::getVendorBookings(QString vendorUsername)
     return res;
 }
 
-/* ---- waitlist ---- */
-
 Waitlist* DataManager::getWaitlist(QString category, QDate date)
 {
     for (int i = 0; i < waitlistList.size(); i++)
@@ -265,7 +255,6 @@ Waitlist* DataManager::getWaitlist(QString category, QDate date)
             waitlistList[i]->getMarketDate() == date)
             return waitlistList[i];
 
-    // create new one if doesnt exist yet
     Waitlist* wl = new Waitlist(category, date);
     waitlistList.append(wl);
     return wl;
@@ -280,8 +269,6 @@ QVector<Waitlist*> DataManager::getVendorWaitlists(QString vendorUsername)
     return res;
 }
 
-/* ---- notifications ---- */
-
 void DataManager::sendNotification(QString vendorUsername, Notification n)
 {
     notificationMap[vendorUsername].append(n);
@@ -292,8 +279,6 @@ QVector<Notification> DataManager::getNotifications(QString vendorUsername)
 {
     return notificationMap.value(vendorUsername);
 }
-
-/* ---- sqlite write helpers ---- */
 
 void DataManager::writeBookingToDb(StallBooking& b)
 {
@@ -328,27 +313,23 @@ void DataManager::persistMarketDate(MarketDate* md)
 
 void DataManager::persistWaitlist(Waitlist* wl)
 {
-    // wipe old rows then rewrite current queue order
     QSqlQuery q;
     q.prepare("DELETE FROM waitlists WHERE category=? AND market_date=?");
     q.addBindValue(wl->getCategory());
     q.addBindValue(wl->getMarketDateStr());
     q.exec();
 
-    for (int i = 0; i < userList.size(); i++) {
-        if (userList[i]->getRole() != User::VendorRole) continue;
-        QString vu = userList[i]->getUsername();
-        int pos = wl->positionOf(vu);
-        if (pos > 0) {
-            QSqlQuery ins;
-            ins.prepare("INSERT INTO waitlists (category, market_date, vendor_username, position) "
-                        "VALUES (?,?,?,?)");
-            ins.addBindValue(wl->getCategory());
-            ins.addBindValue(wl->getMarketDateStr());
-            ins.addBindValue(vu);
-            ins.addBindValue(pos);
-            ins.exec();
-        }
+    // rewrite queue in exact FIFO order
+    QList<QString> queue = wl->getQueue();
+    for (int i = 0; i < queue.size(); i++) {
+        QSqlQuery ins;
+        ins.prepare("INSERT INTO waitlists (category, market_date, vendor_username, position) "
+                    "VALUES (?,?,?,?)");
+        ins.addBindValue(wl->getCategory());
+        ins.addBindValue(wl->getMarketDateStr());
+        ins.addBindValue(queue[i]);
+        ins.addBindValue(i + 1);
+        ins.exec();
     }
 }
 
