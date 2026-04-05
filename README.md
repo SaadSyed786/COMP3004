@@ -2,51 +2,40 @@
 ### COMP 3004 Winter 2026 - Deliverable 2
 ### Team #64
 
-## How to Build and Run in Qt Creator
+## How to Build and Run QT Creator
 
-1. Extract the zip file
+1. Extract zip
 2. Open `HintonMarket.pro` in Qt Creator 6.0.2
 3. Configure project (default kit)
 4. Press Run (Ctrl+R)
 
-## Database Setup
+## location in course VM 
+- student/Desktop/COMP3004/team_64_D1
 
-This project uses **Option A — Auto-copy via .pro file**.
 
-The `hintonMarket.db` database is in the source folder next to the `.pro` file. The `.pro` has a copydb rule that copies it to the build directory automatically on first build. No manual steps needed.
-
-If auto-copy fails, manually copy `hintonMarket.db` from the source folder to the build output directory.
-
-## User Accounts for Testing
-
-### Food Vendors
+## User for Testing
+# Food Users
 - haashir
+- saad 
 - ali
-- saad
-- syed
+- max
 
-### Artisan Vendors
-- tanveer
-- sohail
-- ahmed
+# Artisian Users
+- jon
+- merab
+- shamil
+- ilia
+
+# Operator 
 - dana
 
-### Market Operator
-- operator
-
-### System Administrator
+# Admin
 - admin
 
-No passwords required.
+no pswds for users jsu ttype in user user lsit provided on main page
 
-## New in Deliverable 2
 
-### SQLite Persistence
-All data is stored in memory as objects AND in the SQLite database. Data persists between program restarts.
+## Database Setup
 
-### Market Operator Features (login as "operator")
-1. **Book a stall on behalf of a vendor** — Select vendor from dropdown + market date, click "Book Stall for Vendor"
-2. **Cancel a stall booking on behalf of a vendor** — Select vendor, select their booking, click "Cancel Booking"
-3. **Remove a vendor from a waitlist** — Select vendor, select waitlist entry, click "Remove from Waitlist"
-
-All operator actions show up on the vendor's dashboard when the vendor logs in.
+we  used **Option A**.
+The database  `hintonMarket.db`is located in the source folder with the  `.pro` file which has the copydb rule which copies it to the build drieclty all autmoaticlly wihtout the need of any manual steps , but if manual fails than manually have to copy `hintonMarket.db` from the source folder to the build output directory
