@@ -5,28 +5,26 @@
 #include <QDate>
 #include <QList>
 
-// FIFO queue for vendors waiting for a stall on a given market date
+// FIFO queues for vendors waiting for a stall 
 class Waitlist
 {
 public:
     Waitlist(QString vendorCategory, QDate marketDate);
-
     QString getCategory();
-    QDate   getMarketDate();
+    QDate getMarketDate();
     QString getMarketDateStr();
-
-    void    enqueue(QString vendorUsername);
-    bool    remove(QString vendorUsername);
+    void enqueue(QString vendorUsername);
+    bool remove(QString vendorUsername);
     QString peekNext();
     QString dequeueNext();
-    int     positionOf(QString vendorUsername);
-    bool    contains(QString vendorUsername);
-    int     size();
+    int positionOf(QString vendorUsername);
+    bool contains(QString vendorUsername);
+    int size();
     QList<QString> getQueue();
 
 private:
     QString vendorCategory;
-    QDate   marketDate;
+    QDate marketDate;
     QList<QString> queue;
 };
 

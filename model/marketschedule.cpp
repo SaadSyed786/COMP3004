@@ -8,11 +8,11 @@ QVector<MarketDate*> MarketSchedule::getDates() { return allDates; }
 
 int MarketSchedule::count() { return allDates.size(); }
 
-MarketDate* MarketSchedule::findByDate(QDate d)
-{
+MarketDate* MarketSchedule::findByDate(QDate d){
     for (int i = 0; i < allDates.size(); i++) {
-        if (allDates[i]->getDate() == d)
+        if (allDates[i]->getDate() == d){
             return allDates[i];
+        }
     }
     return nullptr;
 }

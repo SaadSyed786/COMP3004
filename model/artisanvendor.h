@@ -9,9 +9,8 @@ public:
     ArtisanVendor(QString uname, QString ownerName, QString businessName,
                   QString email, QString phone, QString mailingAddress);
     ~ArtisanVendor();
-
     bool hasRequiredDocs() override;
-    bool isCompliant()     override;
+    bool isCompliant() override;
 };
 
 #endif

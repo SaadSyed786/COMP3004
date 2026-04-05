@@ -5,12 +5,11 @@ User::User(QString uname, QString name, Role r)
 
 User::~User() {}
 
-QString User::getUsername()   { return username; }
-QString User::getFullName()   { return fullName; }
-User::Role User::getRole()   { return role; }
+QString User::getUsername(){ return username; }
+QString User::getFullName(){ return fullName; }
+User::Role User::getRole(){ return role; }
 
-QString User::getRoleString()
-{
+QString User::getRoleString(){
     switch (role) {
         case VendorRole:   return "Vendor";
         case OperatorRole: return "Market Operator";

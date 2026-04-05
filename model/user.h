@@ -7,10 +7,8 @@ class User
 {
 public:
     enum Role { VendorRole, OperatorRole, AdminRole };
-
     User(QString uname, QString name, Role r);
     virtual ~User();
-
     QString getUsername();
     QString getFullName();
     Role    getRole();
@@ -19,7 +17,7 @@ public:
 protected:
     QString username;
     QString fullName;
-    Role    role;
+    Role role;
 };
 
 #endif

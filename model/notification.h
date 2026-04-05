@@ -8,16 +8,14 @@ class Notification
 {
 public:
     enum Type { BookingConfirmed, BookingCancelled, WaitlistAlert, Info };
-
     Notification(QString message, Type type = Info);
-
-    QString   getMessage();
-    Type      getType();
+    QString getMessage();
+    Type getType();
     QDateTime getTime();
 
 private:
-    QString   message;
-    Type      type;
+    QString message;
+    Type type;
     QDateTime createdAt;
 };
 

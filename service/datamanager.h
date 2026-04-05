@@ -1,6 +1,5 @@
 #ifndef DATAMANAGER_H
 #define DATAMANAGER_H
-
 #include "user.h"
 #include "vendor.h"
 #include "foodvendor.h"
@@ -11,7 +10,6 @@
 #include "stallbooking.h"
 #include "waitlist.h"
 #include "notification.h"
-
 #include <QVector>
 #include <QMap>
 #include <QSqlDatabase>
@@ -20,34 +18,27 @@
 #include <QCoreApplication>
 #include <QDebug>
 
-class DataManager
-{
+class DataManager{
 public:
     DataManager();
     ~DataManager();
-
-    // lookups
     User*   findUser(QString username);
     Vendor* findVendor(QString username);
     QVector<Vendor*> getAllVendors();
     MarketSchedule* getSchedule();
-
-    // booking operations (update memory + db)
+    // booking ops
     void addBooking(StallBooking booking);
     void removeBooking(QString vendorUsername, QDate date);
     bool hasBooking(QString vendorUsername, QDate date);
     bool hasAnyBooking(QString vendorUsername);
     QVector<StallBooking> getVendorBookings(QString vendorUsername);
-
-    // waitlist operations
+    // waitlist ops
     Waitlist* getWaitlist(QString category, QDate date);
     QVector<Waitlist*> getVendorWaitlists(QString vendorUsername);
-
-    // notifications
+    // noti
     void sendNotification(QString vendorUsername, Notification n);
     QVector<Notification> getNotifications(QString vendorUsername);
 
-    // db sync helpers (called by controllers after waitlist/date changes)
     void persistWaitlist(Waitlist* wl);
     void persistMarketDate(MarketDate* md);
 
@@ -61,7 +52,6 @@ private:
     void writeBookingToDb(StallBooking& b);
     void deleteBookingFromDb(QString vendorUsername, QDate date);
     void writeNotificationToDb(QString vendorUsername, Notification& n);
-
     QSqlDatabase database;
     QVector<User*> userList;
     MarketSchedule schedule;

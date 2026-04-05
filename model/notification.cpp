@@ -5,4 +5,4 @@ Notification::Notification(QString message, Type type)
 
 QString   Notification::getMessage() { return message; }
 Notification::Type Notification::getType() { return type; }
-QDateTime Notification::getTime()    { return createdAt; }
+QDateTime Notification::getTime(){ return createdAt; }

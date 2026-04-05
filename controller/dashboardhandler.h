@@ -5,7 +5,7 @@
 class DashboardHandler {
 public:
     DashboardHandler(DataManager* mgr);
-    Vendor*              getVendorInfo(QString username);
+    Vendor* getVendorInfo(QString username);
     QVector<StallBooking> getBookings(QString username);
     QVector<Waitlist*>   getWaitlists(QString username);
     QVector<Notification> getNotifications(QString username);

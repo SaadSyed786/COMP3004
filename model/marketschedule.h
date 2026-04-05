@@ -8,7 +8,6 @@ class MarketSchedule
 {
 public:
     MarketSchedule();
-
     void addDate(MarketDate* md);
     QVector<MarketDate*> getDates();
     MarketDate* findByDate(QDate d);
